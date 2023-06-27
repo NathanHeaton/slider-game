@@ -11,7 +11,4 @@ C:\Users\Dell\Desktop\programming\slider game\slider game\slider game\Menu.cpp(1
           ]
 C:\Users\Dell\Desktop\programming\slider game\slider game\slider game\Menu.cpp(21,35): warning C4305: 'argument': truncation from 'double' to 'float'
 C:\Users\Dell\Desktop\programming\slider game\slider game\slider game\Menu.cpp(21,30): warning C4305: 'argument': truncation from 'double' to 'float'
-  game.cpp
-C:\Users\Dell\Desktop\programming\slider game\slider game\slider game\game.cpp(30,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  Generating Code...
   slider game.vcxproj -> C:\Users\Dell\Desktop\programming\slider game\slider game\Debug\slider game.exe
