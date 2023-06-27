@@ -8,6 +8,6 @@ const int static NORTH = 3; // direction north
 const int static SOUTH = 4;
 const int static IDLE = 0; // if no input
 
-const float SCREEN_WIDTH = 1920;   // the size of the screen in pixels used in the game
-const float SCREEN_HEIGHT = 1080;
+const float SCREEN_WIDTH = 1880;   // the size of the screen in pixels used in the game
+const float SCREEN_HEIGHT = 980;
 

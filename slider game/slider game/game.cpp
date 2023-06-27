@@ -100,4 +100,9 @@ void Game::update()
 
 void Game::draw()
 {
+	if (m_screen == menu)
+	{
+		mainMenu.draw(m_window);
+	}
+
 }
