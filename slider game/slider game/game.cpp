@@ -92,17 +92,59 @@ void Game::run()
 
 void Game::processEvents()
 {
+
+
+
+
+
+
+
+}
+
+void Game::processKeys()
+{
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+	{
+		fish.movement(NORTH);
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+	{
+		fish.movement(EAST);
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+	{
+		fish.movement(SOUTH);
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+	{
+		fish.movement(WEST);
+	}
 }
 
 void Game::update()
 {
+	processKeys();
+	// updates the fishes animations and boudary checks
+	fish.Update();
+
 }
 
 void Game::draw()
 {
+
+	m_screen = gameplay;// temp
+
 	if (m_screen == menu)
 	{
 		mainMenu.draw(m_window);
 	}
+	if (m_screen == gameplay)
+	{
+		m_window.clear();
 
+		m_window.draw(fish.getPlayerSprite());
+
+
+		m_window.display();
+	}
 }

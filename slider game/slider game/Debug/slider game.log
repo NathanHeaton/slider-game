@@ -1,14 +1,2 @@
-﻿  Menu.cpp
-C:\Users\Dell\Desktop\programming\slider game\slider game\slider game\Menu.cpp(19,68): warning C4244: 'argument': conversion from 'const float' to 'T', possible loss of data
-          with
-          [
-              T=int
-          ]
-C:\Users\Dell\Desktop\programming\slider game\slider game\slider game\Menu.cpp(19,54): warning C4244: 'argument': conversion from 'const float' to 'T', possible loss of data
-          with
-          [
-              T=int
-          ]
-C:\Users\Dell\Desktop\programming\slider game\slider game\slider game\Menu.cpp(21,35): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\Dell\Desktop\programming\slider game\slider game\slider game\Menu.cpp(21,30): warning C4305: 'argument': truncation from 'double' to 'float'
+﻿  player.cpp
   slider game.vcxproj -> C:\Users\Dell\Desktop\programming\slider game\slider game\Debug\slider game.exe

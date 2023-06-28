@@ -11,3 +11,5 @@ const int static IDLE = 0; // if no input
 const float SCREEN_WIDTH = 1880;   // the size of the screen in pixels used in the game
 const float SCREEN_HEIGHT = 980;
 
+const int FISH_WIDTH = 64;
+const int FISH_HEIGHT = 48;

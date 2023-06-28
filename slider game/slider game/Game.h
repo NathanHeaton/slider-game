@@ -7,7 +7,7 @@
 #include <ctime>   // supports ctime function
 #include "globals.h"
 #include "Menu.h"
-
+#include "Player.h"
 enum menus {
 	none,
 	menu,
@@ -21,11 +21,12 @@ enum menus {
 class Game
 {
 	Menu mainMenu;
+	Player fish;
 
 private:
 
 	sf::RenderWindow m_window;
-	int m_screen = menu;//stores which screen we should be on
+	int m_screen = gameplay;//stores which screen we should be on
 
 
 
@@ -35,6 +36,7 @@ public:	  // declaration of member functions
 	void loadContent();
 	void run();
 	void processEvents();
+	void processKeys();
 	void update();
 	void draw();
 
