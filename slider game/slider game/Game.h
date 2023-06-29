@@ -8,16 +8,7 @@
 #include "globals.h"
 #include "Menu.h"
 #include "Player.h"
-enum menus {
-	none,
-	menu,
-	gameplay,
-	pause,
-	instruction,
-	gameOver
 
-
-};
 class Game
 {
 	Menu mainMenu;
@@ -26,9 +17,11 @@ class Game
 private:
 
 	sf::RenderWindow m_window;
-	int m_screen = gameplay;//stores which screen we should be on
+	int m_screen = menu;//stores which screen we should be on
 
-
+	// backgrounds and screens
+	sf::RectangleShape m_sea;// temp background
+	sf::RectangleShape m_pauseOverlay;// pause screen
 
 
 public:	  // declaration of member functions	

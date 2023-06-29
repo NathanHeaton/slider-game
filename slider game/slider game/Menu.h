@@ -4,6 +4,7 @@
 #include "globals.h"
 #include <iostream>
 
+
 class Menu
 {
 
@@ -16,11 +17,17 @@ private:
 	sf::Text m_menuText;
 	sf::Font m_font;
 
+	// buttons
+	sf::RectangleShape m_playButton; // button to switch to gameplay
+
+	int m_mousePosX = 0;
+	int m_mousePosy = 0;
+
 public:
 
 	Menu();
 	void loadContent();
-	void processEvents();
+	int processEvents(sf::Event t_event);
 	void update();
 	void draw(sf::RenderWindow& t_window);
 };

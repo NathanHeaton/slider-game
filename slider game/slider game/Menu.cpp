@@ -32,11 +32,25 @@ void Menu::loadContent()
 	m_menuText.setOutlineThickness(6u);
 	m_menuText.setPosition(sf::Vector2f((SCREEN_WIDTH / 2)-200, 200));
 	m_menuText.setString("Main Menu");
+
+	m_playButton.setFillColor(sf::Color::Black);
+	m_playButton.setPosition(sf::Vector2f((SCREEN_WIDTH / 2) - 100, 400));
+	m_playButton.setSize(sf::Vector2f(200, 100));
+
 }
 
-void Menu::processEvents()
+int Menu::processEvents(sf::Event t_event)
 {
+	m_mousePosX = t_event.mouseButton.x;
+	m_mousePosy = t_event.mouseButton.y;
 
+	if (m_mousePosX >= m_playButton.getPosition().x && m_mousePosX <= 200+(SCREEN_WIDTH / 2) && m_mousePosy >= 400 && m_mousePosy <=500)
+	{
+		return 2;
+	}
+
+
+	return 0;
 }
 
 void Menu::update()
@@ -50,5 +64,6 @@ void Menu::draw(sf::RenderWindow& t_window)
 
 	t_window.draw(m_backgroundSprite);
 	t_window.draw(m_menuText);
+	t_window.draw(m_playButton);
 	t_window.display();
 }

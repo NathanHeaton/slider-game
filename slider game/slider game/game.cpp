@@ -43,6 +43,13 @@ Game::Game() : m_window(sf::VideoMode(static_cast<int>(SCREEN_WIDTH), static_cas
 void Game::loadContent()
 // Load the font file & setup the message string
 {
+	m_sea.setFillColor(sf::Color(59, 80, 255));
+	m_sea.setPosition(0, 0);
+	m_sea.setSize(sf::Vector2f(SCREEN_WIDTH, SCREEN_HEIGHT));
+
+	m_pauseOverlay.setFillColor(sf::Color(50, 50, 50, 100));
+	m_pauseOverlay.setPosition(0, 0);
+	m_pauseOverlay.setSize(sf::Vector2f(SCREEN_WIDTH, SCREEN_HEIGHT));
 }
 
 void Game::run()
@@ -93,7 +100,23 @@ void Game::run()
 void Game::processEvents()
 {
 
+	sf::Event newEvent;
+	while (m_window.pollEvent(newEvent))
+	{
+		if (sf::Event::MouseButtonPressed == newEvent.type) //user mouse down
+		{
+			if (m_screen == menu)
+			{
+				if (mainMenu.processEvents(newEvent) == 2)// process mouse presses in main menu if 2 is returned gameplay button was clicked
+				{
+					m_screen = gameplay;
+				}
+			}
 
+		}
+
+
+	}
 
 
 
@@ -103,21 +126,38 @@ void Game::processEvents()
 
 void Game::processKeys()
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+	if (m_screen == gameplay)
 	{
-		fish.movement(NORTH);
+		//Wasd movement for fish
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+		{
+			fish.movement(NORTH);
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+		{
+			fish.movement(EAST);
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+		{
+			fish.movement(SOUTH);
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+		{
+			fish.movement(WEST);
+		}
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) // if escape key is presed game goes back to main menu
+		{
+			m_screen = pause;
+		}
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+	// when game is paused
+	if (m_screen == pause)
 	{
-		fish.movement(EAST);
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-	{
-		fish.movement(SOUTH);
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-	{
-		fish.movement(WEST);
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::C)) // if escape key is presed game goes back to main menu
+		{
+			m_screen = gameplay;
+		}
 	}
 }
 
@@ -131,20 +171,26 @@ void Game::update()
 
 void Game::draw()
 {
-
-	m_screen = gameplay;// temp
-
+	
 	if (m_screen == menu)
 	{
 		mainMenu.draw(m_window);
 	}
-	if (m_screen == gameplay)
+	else // screen is on gameplay/pause
 	{
 		m_window.clear();
+		if (m_screen == gameplay || m_screen == pause)//renders game assest when paused or while playing
+		{
 
-		m_window.draw(fish.getPlayerSprite());
+			m_window.draw(m_sea);
+			m_window.draw(fish.getPlayerSprite());
 
+		}
+		if (m_screen == pause) // renders pause overlay on top of gameplay
+		{
+			m_window.draw(m_pauseOverlay);
 
+		}
 		m_window.display();
 	}
 }

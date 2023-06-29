@@ -13,3 +13,14 @@ const float SCREEN_HEIGHT = 980;
 
 const int FISH_WIDTH = 64;
 const int FISH_HEIGHT = 48;
+
+enum menus {
+	none,
+	menu,
+	gameplay,
+	pause,
+	instruction,
+	gameOver
+
+
+};
