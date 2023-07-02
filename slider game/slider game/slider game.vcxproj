@@ -130,6 +130,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Food.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="globals.h" />
     <ClInclude Include="Menu.h" />
@@ -137,6 +138,7 @@
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Food.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="player.cpp" />

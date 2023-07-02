@@ -8,12 +8,13 @@
 #include "globals.h"
 #include "Menu.h"
 #include "Player.h"
+#include "Food.h"
 
 class Game
 {
 	Menu mainMenu;
 	Player fish;
-
+	Food food[MAX_FOOD];
 private:
 
 	sf::RenderWindow m_window;
@@ -22,6 +23,11 @@ private:
 	// backgrounds and screens
 	sf::RectangleShape m_sea;// temp background
 	sf::RectangleShape m_pauseOverlay;// pause screen
+	sf::RectangleShape m_playButton; // button to switch to gameplay
+
+	// food stuff
+	int m_foodSpawnTimer = 0;
+	int m_activeFood = 0; // number of currently active piece of food
 
 
 public:	  // declaration of member functions	
@@ -32,6 +38,8 @@ public:	  // declaration of member functions
 	void processKeys();
 	void update();
 	void draw();
+	void SpawnFood();// decides when food should be spawned
+	void foodPlayerCollision();// if player touches food
 
 };
 

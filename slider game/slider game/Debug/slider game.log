@@ -1,3 +1,2 @@
-﻿  game.cpp
-C:\Users\Dell\Desktop\programming\slider game\slider game\slider game\game.cpp(30,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+﻿  player.cpp
   slider game.vcxproj -> C:\Users\Dell\Desktop\programming\slider game\slider game\Debug\slider game.exe

@@ -14,7 +14,7 @@ class Player
 	sf::Sprite m_playerSprite;
 
 	//movement
-	float m_velo{ 3.5 };
+	float m_velo{ 6.5 };
 	sf::Vector2f m_location{};
 	int m_direction;
 	bool m_moving=false;
@@ -31,7 +31,10 @@ class Player
 
 	int m_col = 0;
 
-	int m_idleCount = 0; //after 5 frames the player is set to idle of there is no input
+	// eating
+	float m_growAmount;
+	float m_size;
+
 public:
 	Player();
 	void setupSprite();
@@ -41,5 +44,6 @@ public:
 	void animation(int t_direction);
 	void keepInBounds();
 	void Update();
+	void grow();// player grows when food is eaten
 
 };

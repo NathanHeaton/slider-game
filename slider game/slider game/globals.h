@@ -14,6 +14,9 @@ const float SCREEN_HEIGHT = 980;
 const int FISH_WIDTH = 64;
 const int FISH_HEIGHT = 48;
 
+
+const int MAX_FOOD = 15;
+
 enum menus {
 	none,
 	menu,

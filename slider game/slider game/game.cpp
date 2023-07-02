@@ -50,6 +50,11 @@ void Game::loadContent()
 	m_pauseOverlay.setFillColor(sf::Color(50, 50, 50, 100));
 	m_pauseOverlay.setPosition(0, 0);
 	m_pauseOverlay.setSize(sf::Vector2f(SCREEN_WIDTH, SCREEN_HEIGHT));
+	// button in pause menu to go back to gameplpay
+	m_playButton.setFillColor(sf::Color::Black);
+	m_playButton.setPosition(sf::Vector2f((SCREEN_WIDTH / 2) - 100, 400));
+	m_playButton.setSize(sf::Vector2f(200, 100));
+
 }
 
 void Game::run()
@@ -112,7 +117,13 @@ void Game::processEvents()
 					m_screen = gameplay;
 				}
 			}
-
+			if (m_screen == pause) // code reused as button is in the same place
+			{
+				if (mainMenu.processEvents(newEvent) == 2)// process mouse presses in pause menu if 2 is returned gameplay button was clicked
+				{
+					m_screen = gameplay;
+				}
+			}
 		}
 
 
@@ -164,8 +175,20 @@ void Game::processKeys()
 void Game::update()
 {
 	processKeys();
-	// updates the fishes animations and boudary checks
-	fish.Update();
+
+	if (m_screen == gameplay)//renders game assest when paused or while playing
+	{
+		// updates the fishes animations and boudary checks
+		fish.Update();
+		SpawnFood();
+		for (int i = 0; i <= m_activeFood; i++)// loops for active amount of food
+		{
+			food[i].update();
+		}
+		foodPlayerCollision();// checks if player collide with food
+	}
+
+
 
 }
 
@@ -185,12 +208,69 @@ void Game::draw()
 			m_window.draw(m_sea);
 			m_window.draw(fish.getPlayerSprite());
 
+			for (int i = 0; i <= m_activeFood; i++)// loops for active amount of food
+			{
+				if (food[i].isActive())// checks if the food is active
+				{
+				m_window.draw(food[i].getFood());// gets food sprite and reders it
+				}
+			}
+
 		}
 		if (m_screen == pause) // renders pause overlay on top of gameplay
 		{
 			m_window.draw(m_pauseOverlay);
-
+			m_window.draw(m_playButton);
 		}
 		m_window.display();
 	}
+}
+
+void Game::SpawnFood()
+{
+	for (int i = 0; i <= m_activeFood; i++)// loops for active amount of food
+	{
+		//spawns food
+		if (m_foodSpawnTimer <= 0 && m_activeFood < MAX_FOOD - 1)
+		{
+
+			if (!food[i].isActive())
+			{
+				food[i].spawn();
+			}
+			else // if all of the food is active spawn new food
+			{
+				food[m_activeFood].spawn();
+				m_activeFood++; // increase active food
+			}
+
+			m_foodSpawnTimer = rand() % 30 + 30;
+			break;// only spawns 1 piece of food
+		}
+		else
+		{
+			break; // if timer is not 0 or the max amount of food is reached breaks out
+		}
+	}
+
+	m_foodSpawnTimer--;
+
+}
+
+void Game::foodPlayerCollision()
+{
+	for (int i = 0; i <= m_activeFood; i++)// loops for all food
+	{
+		if (food[i].isActive())
+		{
+			if (fish.getPlayerSprite().getGlobalBounds().intersects(food[i].getFood().getGlobalBounds()))// checks is player and any food intercect
+			{
+				food[i].despawn();// despawns collect food
+				fish.grow();// grows player
+			}
+		}
+	}
+
+
+
 }
