@@ -3,7 +3,7 @@
 Player::Player()
 {
 	setupSprite();
-	m_growAmount = 0.5;
+	m_growAmount = 0.75;
 	m_size = 3;
 }
 
@@ -20,6 +20,12 @@ void Player::setupSprite()
 	m_playerSprite.setScale(3, 3);
 	m_location = sf::Vector2f(500, 500);
 	m_playerSprite.setPosition(m_location);
+
+	if (!m_speedEvolution1Texture.loadFromFile("ASSETS/IMAGES/fishEvoSpeed1-Sheet.png"))
+	{
+		std::cout << "error with fish file\n";
+	}
+
 }
 
 sf::Sprite Player::getPlayerSprite()
@@ -103,17 +109,36 @@ void Player::keepInBounds() // makes sure player stays within the game screen
 
 void Player::Update()
 {
-	if (m_moving)
+	if (m_moving) // only needs to check if the fish is moving
 	{
 		keepInBounds();
 		animation(m_direction);
 		m_moving = false;
 	}
+	
+	if (m_size > 5 && m_evolveCounter == 0) // if the scale of the fish becomes 8 or over
+	{
+		m_playerSprite.setTexture(m_speedEvolution1Texture);
+		m_evolving = true;
+	}
+
+	if (m_evolving) // if fish is ready to evolve
+	{
+		m_evolveFlash = !m_evolveFlash; // toggles flash
+		if(m_evolveFlash)
+		{
+			m_playerSprite.setColor(sf::Color::White);
+		}
+		else
+		{
+			m_playerSprite.setColor(sf::Color::Blue);
+		}
+	}
 }
 
 void Player::grow()
 {
-	m_size += m_growAmount;
+	m_size = m_size - log(m_growAmount);
 	if (m_direction == WEST) // if sprite is facing other direction increase size on that side to
 	{
 		m_playerSprite.setScale(-m_size, m_size);
@@ -122,6 +147,34 @@ void Player::grow()
 	{
 		m_playerSprite.setScale(m_size, m_size);
 	}
+	
+}
+
+bool Player::isEvolving()
+{
+	return m_evolving;
+}
+
+void Player::Evolve(int t_option)
+{
+
+	if (t_option == 1)
+	{
+		m_playerSprite.setTexture(m_speedEvolution1Texture);
+		m_playerSprite.setColor(sf::Color::White);
+		m_velo = 8;
+		m_size = 3;
+	}
+	else if (t_option == 2)
+	{
+		m_playerSprite.setTexture(m_speedEvolution1Texture);
+		m_playerSprite.setColor(sf::Color::Black);
+		m_size = 3.5;
+	}
+	m_evolving = false;// evolution is no complete
+	m_evolveCounter++;
 
 }
+
+
 

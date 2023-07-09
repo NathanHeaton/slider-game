@@ -161,6 +161,20 @@ void Game::processKeys()
 		{
 			m_screen = pause;
 		}
+
+		// if player is evolving
+		if (fish.isEvolving())
+		{
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
+			{
+				fish.Evolve(1); // first evolution path
+			}
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2))
+			{
+				fish.Evolve(2); // second evolution path
+			}
+		}
+
 	}
 	// when game is paused
 	if (m_screen == pause)
@@ -231,14 +245,14 @@ void Game::SpawnFood()
 	for (int i = 0; i <= m_activeFood; i++)// loops for active amount of food
 	{
 		//spawns food
-		if (m_foodSpawnTimer <= 0 && m_activeFood < MAX_FOOD - 1)
+		if (m_foodSpawnTimer <= 0 )
 		{
 
 			if (!food[i].isActive())
 			{
 				food[i].spawn();
 			}
-			else // if all of the food is active spawn new food
+			else if (m_activeFood < MAX_FOOD - 1)// if all of the food is active spawn new food
 			{
 				food[m_activeFood].spawn();
 				m_activeFood++; // increase active food
