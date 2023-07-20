@@ -14,12 +14,13 @@ private:
 	sf::Vector2f m_location;
 	bool m_active; // stores state of food 
 	int m_despawnTimer; 
-
+	foods m_type = foodsnone;// stores the type of food
 
 public:
 
 	Food();
 	void loadContent();
+	void setType(foods t_type);
 	void spawn();
 	void despawn();
 	void update();

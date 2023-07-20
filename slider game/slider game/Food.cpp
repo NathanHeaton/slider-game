@@ -15,6 +15,20 @@ void Food::loadContent()
 
 }
 
+void Food::setType(foods t_type) // turns food into correct type
+{
+	m_type = t_type;
+
+	if (m_type == speedFruit)// if the food type is speed fruit
+	{
+		m_foodPellet.setFillColor(sf::Color(230, 40, 40));// makes food into speed fruit / red
+	}
+	else
+	{
+		m_foodPellet.setFillColor(sf::Color(230, 230, 40));// makes food into pellet / yellow
+	}
+}
+
 void Food::spawn()
 {
 	//decalartion
@@ -22,7 +36,14 @@ void Food::spawn()
 	int xPos = 0;
 	int yPos = 0;
 
-	foodSize = rand() % 10 + 5;// randomise food size
+	if (m_type == speedFruit)
+	{
+		foodSize = rand() % 10 + 10;// randomise food size
+	}
+	else if (m_type == pellet)
+	{
+		foodSize = rand() % 10 + 5;// randomise food size
+	}
 
 	// random position along the screen minus the very edges
 	xPos = (rand() % ((int)SCREEN_WIDTH - 10)) + 20; 
@@ -46,7 +67,7 @@ void Food::despawn()
 
 void Food::update()
 {
-	if (m_despawnTimer < 0)
+	if (m_despawnTimer <= 0)
 	{
 		despawn(); // despawns food after timer runs out
 		

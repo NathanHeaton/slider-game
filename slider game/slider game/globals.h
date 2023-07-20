@@ -27,3 +27,10 @@ enum menus {
 
 
 };
+
+enum foods {
+	foodsnone,
+	pellet,
+	speedFruit,
+
+};

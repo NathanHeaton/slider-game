@@ -38,6 +38,7 @@ int main()
 Game::Game() : m_window(sf::VideoMode(static_cast<int>(SCREEN_WIDTH), static_cast<int>(SCREEN_HEIGHT)), "Slider Game", sf::Style::Default)
 // Default constructor
 {
+
 }
 
 void Game::loadContent()
@@ -55,6 +56,12 @@ void Game::loadContent()
 	m_playButton.setPosition(sf::Vector2f((SCREEN_WIDTH / 2) - 100, 400));
 	m_playButton.setSize(sf::Vector2f(200, 100));
 
+	//sets different food types
+	for (int i = 0; i < MAX_FOOD; i++)// loops for max amount of food
+	{
+		speedFruits[i].setType(speedFruit);// sets food to be of type speed fruit
+		food[i].setType(pellet);// sets food to be pellet
+	}
 }
 
 void Game::run()
@@ -198,6 +205,7 @@ void Game::update()
 		for (int i = 0; i <= m_activeFood; i++)// loops for active amount of food
 		{
 			food[i].update();
+			speedFruits[i].update();
 		}
 		foodPlayerCollision();// checks if player collide with food
 	}
@@ -227,6 +235,12 @@ void Game::draw()
 				if (food[i].isActive())// checks if the food is active
 				{
 				m_window.draw(food[i].getFood());// gets food sprite and reders it
+
+				}
+				if (speedFruits[i].isActive())// checks if the food is active
+				{
+					m_window.draw(speedFruits[i].getFood());// gets food sprite and reders it
+
 				}
 			}
 
@@ -244,10 +258,10 @@ void Game::SpawnFood()
 {
 	for (int i = 0; i <= m_activeFood; i++)// loops for active amount of food
 	{
-		//spawns food
-		if (m_foodSpawnTimer <= 0 )
+		//spawns food pellets
+		if (m_foodSpawnTimer <= 0)
 		{
-
+			// pellets
 			if (!food[i].isActive())
 			{
 				food[i].spawn();
@@ -257,6 +271,17 @@ void Game::SpawnFood()
 				food[m_activeFood].spawn();
 				m_activeFood++; // increase active food
 			}
+
+			// speed fruit
+			if (!speedFruits[i].isActive())
+			{
+				speedFruits[i].spawn();
+			}
+			else if (m_activeFood < MAX_FOOD - 1)// if all of the food is active spawn new food
+			{
+				speedFruits[m_activeFood].spawn();
+				m_activeFood++; // increase active food
+			}//
 
 			m_foodSpawnTimer = rand() % 30 + 30;
 			break;// only spawns 1 piece of food

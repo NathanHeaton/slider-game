@@ -1,5 +1,22 @@
-﻿  game.cpp
-C:\Users\Dell\Desktop\programming\slider game\slider game\slider game\game.cpp(30,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  player.cpp
-  Generating Code...
+﻿  Food.cpp
+C:\Users\Dell\Desktop\programming\slider game\slider game\slider game\Food.cpp(52,34): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Dell\Desktop\programming\slider game\slider game\slider game\Food.cpp(52,28): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Dell\Desktop\programming\slider game\slider game\slider game\Food.cpp(55,46): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Dell\Desktop\programming\slider game\slider game\slider game\Food.cpp(55,36): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
   slider game.vcxproj -> C:\Users\Dell\Desktop\programming\slider game\slider game\Debug\slider game.exe

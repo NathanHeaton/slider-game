@@ -15,6 +15,7 @@ class Game
 	Menu mainMenu;
 	Player fish;
 	Food food[MAX_FOOD];
+	Food speedFruits[MAX_FOOD];
 private:
 
 	sf::RenderWindow m_window;
