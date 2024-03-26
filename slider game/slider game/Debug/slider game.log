@@ -1,22 +1,38 @@
 ﻿  Food.cpp
-C:\Users\Dell\Desktop\programming\slider game\slider game\slider game\Food.cpp(52,34): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\natha\OneDrive\Desktop\Setu work\slider-game\slider game\slider game\Food.cpp(52,34): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Dell\Desktop\programming\slider game\slider game\slider game\Food.cpp(52,28): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\natha\OneDrive\Desktop\Setu work\slider-game\slider game\slider game\Food.cpp(52,28): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Dell\Desktop\programming\slider game\slider game\slider game\Food.cpp(55,46): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\natha\OneDrive\Desktop\Setu work\slider-game\slider game\slider game\Food.cpp(55,46): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Dell\Desktop\programming\slider game\slider game\slider game\Food.cpp(55,36): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\natha\OneDrive\Desktop\Setu work\slider-game\slider game\slider game\Food.cpp(55,36): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-  slider game.vcxproj -> C:\Users\Dell\Desktop\programming\slider game\slider game\Debug\slider game.exe
+  game.cpp
+C:\Users\natha\OneDrive\Desktop\Setu work\slider-game\slider game\slider game\game.cpp(30,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Menu.cpp
+C:\Users\natha\OneDrive\Desktop\Setu work\slider-game\slider game\slider game\Menu.cpp(19,68): warning C4244: 'argument': conversion from 'const float' to 'T', possible loss of data
+          with
+          [
+              T=int
+          ]
+C:\Users\natha\OneDrive\Desktop\Setu work\slider-game\slider game\slider game\Menu.cpp(19,54): warning C4244: 'argument': conversion from 'const float' to 'T', possible loss of data
+          with
+          [
+              T=int
+          ]
+C:\Users\natha\OneDrive\Desktop\Setu work\slider-game\slider game\slider game\Menu.cpp(21,38): warning C4305: 'argument': truncation from 'double' to 'float'
+  player.cpp
+  Generating Code...
+  slider game.vcxproj -> C:\Users\natha\OneDrive\Desktop\Setu work\slider-game\slider game\Debug\slider game.exe
